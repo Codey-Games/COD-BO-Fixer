@@ -263,12 +263,14 @@ namespace COD_BO_Fixer
                 WshShell shellDesktop = new WshShell();
                 IWshShortcut shortcutDesktop = (IWshShortcut)shellDesktop.CreateShortcut(desktopTargetPath);
                 shortcutDesktop.TargetPath = filePath;
+                shortcutDesktop.WorkingDirectory = textBox1.Text;
                 shortcutDesktop.Save();
 
                 // make start menu shortcut
                 WshShell shellStartMenu = new WshShell();
                 IWshShortcut shortcutStartMenu = (IWshShortcut)shellStartMenu.CreateShortcut(startMenuProgramsTargetPath);
                 shortcutStartMenu.TargetPath = filePath;
+                shortcutStartMenu.WorkingDirectory = folderPath;
                 shortcutStartMenu.Save();
 
                 MessageBox.Show("Shortcuts created successfully!");
